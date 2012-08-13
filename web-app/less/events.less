@@ -1,0 +1,233 @@
+.day-list-item {
+   .makeRowFluid();
+   margin-bottom: 45px;
+}
+
+.day-wrapper{
+// .makeColumn(1);
+   @media (min-width: 1200px) {
+      .format-date{
+         font-family: @sansFontFamily;
+         font-size: 17px;
+         .day_of_week {
+            font-weight: bold;
+         }
+      }
+   }
+   // Landscape TABLET TO Large DESKTOP
+   @media (max-width: 1199px) {
+      .format-date{
+         font-family: @sansFontFamily;
+         font-size: @baseFontSize;
+         .day_of_week {
+            font-weight: bold;
+         }
+      }
+   }
+}
+
+.day-events {
+   @media (min-width: 1200px) {
+      border-left: 1px solid #ccc;
+      margin: 0 5px 0 25px ;
+      padding: 0 10px;
+   }
+   // Landscape TABLET TO Large DESKTOP
+   @media (min-width: 980px) and (max-width: 1199px) {
+      border-left: 1px solid #ccc;
+      margin: 0 5px 0 25px ;
+      padding: 0 10px;
+   }
+   // PORTRAIT TABLET 
+   @media (min-width: 768px) and (max-width: 979px) {
+      border-left: 1px solid #ccc;
+      margin: 0 5px 0 25px ;
+      padding: 0 10px;
+   }
+   // LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+   @media (min-width: 481px) and (max-width: 767px) {
+      margin: 3px 10px;
+      padding: 0;
+      width: 100%;
+   }
+   // UP TO LANDSCAPE PHONE
+   @media (max-width: 480px) {
+      margin: 3px 10px;
+      padding: 0;
+      width: 100%;
+   }
+}
+
+// Event in List
+section.event{
+   clear:left;
+   color: @eventtitle;
+   .time{
+      font-size: 120%;
+   }
+}
+
+.title{
+   color: @eventtitle;
+   font-family: @sansFontFamily;
+   font-size: @hugeFontSize;
+   font-weight: 300;
+   text-shadow: 1px 0px 1px black;
+   text-align: left;
+   line-height: @hugeLineHeight;
+   @media (max-width: 480px) {
+      font-size: @lessHugeFontSize;
+      line-height: @lessHugeLineHeight;
+   }
+   a {
+      color: @eventtitle;
+   }
+}
+
+.datetime{
+   font-size: @biggerFontSize;
+}
+
+// Display Tags
+.tags{
+   clear:both;
+   list-style: none;
+   margin: 0;
+   padding: 5px 0;
+   overflow: auto;
+   .venue{
+      background-color: @venueTagColr;
+      .tag-template;
+   }
+
+   .language{
+      background-color: @languageTagColr;
+      .tag-template;
+   }
+
+   .tag{
+      background-color: @tagTagColr;
+      .tag-template;
+   }
+
+   .price{
+      background-color: @priceTagColr;
+      .tag-template;
+   }      
+}
+
+.event-twitterHandler{
+   float: left;
+}
+
+// Template for Tags
+.tag-template{
+   margin: 1px;
+   padding: 1px 4px;
+   float: left;
+   color: @tagsFontClr;
+   .border-radius(3px);  
+   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); 
+   font-size: @baseFontSize;
+   font-weight: bold;
+   line-height: @baseLineHeight;
+   vertical-align: baseline;
+   white-space: nowrap;
+   text-decoration: none;
+   &:hover{
+      text-decoration: none;
+      background-color: #fff;
+      color: #333;
+      text-shadow: none;
+   }
+}
+
+
+// Show Event Page
+#show-event{
+   .makeRowFluid();
+}
+
+div.informations{
+//   .makeColumn(11);
+   font-size: @biggerFontSize;
+}
+
+div.sidebar{
+//   .makeColumn(3);
+   font-size: @biggerFontSize;
+
+   ul{
+      clear: both;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li{
+         float: left;
+         margin: 5px;
+      }
+      &.social li{
+         float: left;
+      }
+      .btn {
+         width:90%;
+      }
+   }
+   .event-attendees-wrapper{
+      clear: both;
+   }
+
+   #twitter-conversation{
+      clear: both;
+   }
+}
+
+.description{
+   clear:both;
+   padding: 20px 0px 40px 0px;
+   font-size: @baseFontSize;
+   p{
+      font-size: @baseFontSize;
+   }
+}
+
+.subtitle{
+   padding-top:5px;
+   padding-bottom:5px;
+   .submitter{
+      font-size: 60%;
+      color: #666;
+   }
+}
+
+.map-canvas-small{
+  height: 150px;
+  width: 220px;
+  background-color: #333;
+}
+
+#event-form{
+   .makeRowFluid();
+   
+   @media (max-width: 767px) {
+      [class*="span"]{
+         width: 90%;
+      }
+   }
+}
+
+.cancelled {
+   color: red;
+   text-shadow: none;
+   border: 1px solid red;
+   padding: 1px 4px;
+   .border-radius( 3px );
+   font-size: 14px;
+   font-weight: bold;
+   line-height: 18px;
+   display: block;
+   width: 70px;
+   text-align: center;
+   -webkit-transform: rotate(-369deg);
+   -moz-transform: rotate(-369deg);
+}

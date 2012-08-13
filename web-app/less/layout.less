@@ -1,0 +1,274 @@
+body {
+   margin: 0;
+   padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+   font-family: @baseFontFamily;
+   font-size: @baseFontSize;
+   //line-height: @baseLineHeight;
+   color: @textColor;
+   background-color: @bodyBackground;
+   background: url(../images/light-tile.gif);
+}
+
+a {
+  color: @linkClr;
+  text-decoration: none;
+}
+a:hover {
+  color: @linkHoverClr;
+  text-decoration: underline;
+}
+
+header{
+   color:white;
+   padding: 25px 0 30px 5%;
+   margin: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   width: 95%;
+   text-align: left;
+   background: @headerClr;
+   .box-shadow(inset 1px 0 2px rgba(0, 0, 0, 0.75));
+   z-index: 99;
+   min-height: 68px;
+}
+
+.logo{
+   color: @logoFont;
+   .main-logo{
+      float:left;
+      font-size: 48px;
+      span{
+         .border-radius(10px);
+         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+         padding: 5px 11px;
+      }
+      .tech{
+         background-color: @techClr;
+      }
+      .up{
+         background-color: @upClr;
+      }
+      .lu{
+         background-color: @luClr;  
+      }
+   }
+   .sub-logo{
+      margin-left: 298px;
+      width: 120px;
+      font-size: 15px;
+      line-height: 20px;
+      @media (max-width: 480px) {
+         display:none;
+         visibility: hidden;
+      }
+   }
+}
+
+
+footer {
+   height: 40px;
+background: #eee;
+border-left: 1px solid #CBCBCB;
+border-right: 1px solid #CBCBCB;
+border-bottom: 1px solid #CBCBCB;
+   .border-radius( 0px 0px 2px 2px);
+   padding: 1px 5px;
+color: black;
+   line-height: 40px;
+   font-size: 100%;
+text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;
+   margin-right: auto;
+   margin-left: auto;
+   .right{
+      float:right;
+   }
+   @media (min-width: 1200px) {
+      width: 1170px;
+      margin-bottom: 20px;
+   }
+   // Landscape TABLET TO Large DESKTOP
+   @media (min-width: 980px) and (max-width: 1199px) {
+      width: 930px;
+      margin-bottom: 20px;
+   }
+   // PORTRAIT TABLET 
+   @media (min-width: 768px) and (max-width: 979px) {
+      width: 750px;
+      margin-bottom: 20px;
+   }
+   // LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+   @media (min-width: 481px) and (max-width: 767px) {
+      width: 95%;
+      margin-bottom: 5px;
+   }
+   // UP TO LANDSCAPE PHONE
+   @media (max-width: 480px) {
+      width: 95%;
+      margin-bottom: 5px;
+   }
+}
+
+.tabbable{
+   clear:both;
+}
+
+#banner{
+   z-index: 100;
+   background: #FC0;
+   border: 1px solid #F0B500;
+   .box-shadow(0px 1px 3px rgba(0, 0, 0, 0.25));
+   .links{
+      font-size: 110%;
+      list-style-type: none;
+      li{
+         float:left;
+         .active{
+            margin: 1px;
+            padding: 1px 4px;
+            color: #FC0;
+            .border-radius(3px);  
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); 
+            font-weight: bold;
+            text-decoration: none;
+            background-color: @eventtitle;
+         }
+      }
+      a{
+         color: @eventtitle;
+         text-transform: uppercase;
+         text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0;      
+      }
+   }
+   @media (min-width: 1200px) {
+      left: 0;
+      height: 50px;
+      position: absolute;
+      top: 95px;
+      padding-right: 10px;
+      .border-radius(0px 2px 2px 0px);
+      .links{
+         line-height: 52px;
+         float:right;
+         margin-right: 50px;
+         li{
+            padding: 17px 7px 17px 7px;
+            float:left;
+         }
+      }
+   }
+   // Landscape TABLET TO Large DESKTOP
+   @media (min-width: 980px) and (max-width: 1199px) {
+      left: 0;
+      height: 50px;
+      position: absolute;
+      top: 95px;
+      padding-right: 10px;
+      .border-radius(0px 2px 2px 0px);
+      .links{
+         line-height: 52px;
+         float:right;
+         margin-right: 50px;
+         li{
+            padding: 17px 7px 17px 7px;
+            float:left;
+         }
+      }
+   }
+   // PORTRAIT TABLET 
+   @media (min-width: 768px) and (max-width: 979px) {
+      left: 0;
+      height: 50px;
+      position: absolute;
+      top: 95px;
+      padding-right: 10px;
+      .border-radius(0px 2px 2px 0px);
+      .links{
+         line-height: 52px;
+         float:right;
+         margin-right: 50px;
+         li{
+            padding: 17px 7px 17px 7px;
+            float:left;
+         }
+      }
+   }
+   // LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+   @media (min-width: 481px) and (max-width: 767px) {
+      left: 0;
+      height: 90px;
+      position: relative;
+      top: 35px;
+      padding: 5px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      .border-radius(2px);
+      .links{
+         //line-height: 52px;
+         //float:right;
+         //margin-right: 50px;
+         li{
+            padding: 7px 0px;
+            float:left;
+            width:50%;
+         }
+      }
+   }
+   // UP TO LANDSCAPE PHONE
+   @media (max-width: 480px) {
+      left: 0;
+      height: 90px;
+      position: relative;
+      top: 35px;
+      padding: 5px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      .border-radius(2px);
+      .links{
+         //line-height: 52px;
+         //float:right;
+         //margin-right: 50px;
+         li{
+            padding: 7px 0px;
+            float:left;
+            width:50%;
+         }
+      }
+   }
+}
+
+#content{
+   .container;
+   min-height: 250px;
+   
+   background: #FBFBFB;
+   border: 1px solid #CBCBCB;
+   .box-shadow(0px 1px 2px rgba(0, 0, 0, 0.09));
+   @media (min-width: 1200px) {
+      width: 1170px;
+      padding: 90px 5px 20px 5px;
+   }
+   // Landscape TABLET TO Large DESKTOP
+   @media (min-width: 980px) and (max-width: 1199px) {
+      width: 930px;
+      padding: 90px 5px 20px 5px;
+   }
+   // PORTRAIT TABLET 
+   @media (min-width: 768px) and (max-width: 979px) {
+      width: 750px;
+      padding: 90px 5px 20px 5px;
+   }
+   // LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+   @media (min-width: 481px) and (max-width: 767px) {
+      width: 95%;
+      padding: 40px 5px 20px 5px;
+   }
+   // UP TO LANDSCAPE PHONE
+   @media (max-width: 480px) {
+      width: 95%;
+      padding: 40px 5px 20px 5px;
+   }
+}

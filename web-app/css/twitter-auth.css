@@ -1,0 +1,18 @@
+.twitter-image-button .twitter-login .twitter-button {
+    background: url('../images/sign-in-with-twitter-d.png') no-repeat scroll 0 0 transparent;
+    width: 151px;
+    height: 24px;
+    border: 0 none;
+    display: inline-block;
+    
+}
+
+.twitter-image-button{
+   width:151px;
+   margin: 0 auto;
+}
+
+.twitter-image-button .twitter-login .twitter-button span {
+    left: -9999px;
+    position: absolute;
+}

@@ -66,7 +66,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://www.techup.lu" // SETUP: Use your url here
     }
 }
 
@@ -91,3 +91,25 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'lu.techup.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'lu.techup.UserRole'
+grails.plugins.springsecurity.authority.className = 'lu.techup.Role'
+
+
+grails.plugins.springsecurity.twitter.app.key='accessToken'
+grails.plugins.springsecurity.twitter.app.consumerKey='consumerKey'
+grails.plugins.springsecurity.twitter.app.consumerSecret='consumerSecret'
+grails.plugins.springsecurity.twitter.popup = true
+
+
+// Memchached 5MB Free - provided on addon subscription on heroku
+//grails.plugin.memcached.hosts = ''
+//grails.plugin.memcached.username = ''
+//grails.plugin.memcached.password = ''
+
+//MemCachier 25MB Free :) - conf provided by heroku memcachier
+//grails.plugin.memcached.hosts = ''
+//grails.plugin.memcached.username = ''
+//grails.plugin.memcached.password = ''

@@ -10,7 +10,7 @@ grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
         // uncomment to disable ehcache
-        // excludes 'ehcache'
+        excludes 'ehcache' // For Memchached
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
@@ -29,18 +29,27 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+        // For memchached
+        mavenRepo 'http://raykrueger.googlecode.com/svn/repository' // for hibernate-memcached
+        mavenRepo 'http://files.couchbase.com/maven2/'
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime 'postgresql:postgresql:8.4-702.jdbc3'
+        
     }
 
     plugins {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
-        runtime ":resources:1.1.6"
-
+        //runtime ":resources:1.1.6"
+        compile ":spring-security-core:1.2.7.2"
+        compile ":spring-security-twitter:0.4.3"
+        compile ":feeds:1.5"
+        compile ":webxml:1.4.1"
+        compile ':memcached:1.0.3.2' // Memchached
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"

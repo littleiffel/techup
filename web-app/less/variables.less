@@ -1,0 +1,97 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Colors
+// -------------------------
+//@bodyBackground
+@eventtitle:            @color4;
+@headerClr:             @color4;
+@bannerClr:             @color5;
+@venueTagColr:          @color7;
+@priceTagColr:          @color11;
+@tagTagColr:            @color9;
+@languageTagColr:       @color8;
+@tagsFontClr:           @color10;
+
+@btnDangerBackground:   @color11;
+@btnDangerBackgroundHighlight:   darken(@btnDangerBackground, 15%);
+
+@btnPrimaryBackground:              @color9;
+@btnPrimaryBackgroundHighlight:     darken(@btnPrimaryBackground, 15%);
+
+
+// Adding tags in form
+@addingTagClr:          @color10;
+@addingTagSelectedClr:  @color10;
+@addingTagSelectedFontClr:@color4;
+@addingTagsKnown:       @color5;
+@addingTagsKnownBorder: darken(@addingTagsKnown, 15%);
+
+@addingTagsNew:         @color11;
+@addingTagsNewBorder:   darken(@addingTagsNew, 15%);
+
+@selectitembgClr:       @color10;
+@selectitemFontClr:     @color4;
+
+// Logo
+@logoFont:              @color10;
+@techClr:               @color5;
+@upClr:                 @color5;
+@luClr:                 @color11;
+
+// Links
+// -------------------------
+@linkClr:             @color5;
+@linkHoverClr:        darken(@linkClr, 15%);
+//@linkcolor:  
+//@linkColorHover     
+// Colr Schme 1
+//@color1:                rgba(0,160,176,1);      
+//@color2:                rgba(106,74,60,1);
+//@color3:                rgba(204,51,63,1);
+//@color4:                rgba(235,104,65,1);
+//@color5:                rgba(237,201,81,1);
+
+// Colr Scheme 2
+@color1:                #ECD078; // Yellow
+@color2:                #D95B43; // Orange
+@color3:                #C02942; // Red
+@color4:                #542437; // Darkish Violet
+@color5:                #53777A; // Blue
+@color6:                #8A9B0F; // Green
+@color7:                #351330; // Dark violet
+@color8:                #424254; // favourite jeans
+@color9:                #64908A; // sail boats
+@color10:               #E8CAA4; // tuileries
+@color11:               #CC2A41; // Flame red
+//@textColor
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:          14px;
+@baseFontFamily:        @sansFontFamily;
+@baseLineHeight:        18px;
+@altFontFamily:         @serifFontFamily;
+@biggerFontSize:        20px;
+@lessHugeFontSize:      32px;
+@lessHugeLineHeight:    26px;
+@hugeFontSize:          45px;
+@hugeLineHeight:        35px;
+
+
+.makeRowFluid() {
+  width: 100%;
+  .clearfix();
+}
