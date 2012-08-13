@@ -19,10 +19,12 @@ Change into the directory and start grails with
 
 grails run-app
 
+Navigate to http://localhost:8080/techup
+
 Deploy to Heroku
 =======
 
-To deploy to HEROKU, create a Heroku app, initialize the App via Heroku CLI and deploy with git master push heroku.
+To deploy to HEROKU, create a Heroku app, initialize the App via Heroku CLI and deploy with git master push heroku. See instructions [Grails on Heroku](https://devcenter.heroku.com/articles/grails).
 
 Extras
 =======
