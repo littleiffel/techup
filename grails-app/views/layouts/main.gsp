@@ -53,6 +53,7 @@
         </div>
       </div>
     </header>
+    <a href="https://github.com/littleiffel/techup"><img style="position: absolute; top: 0; right: 0; border: 0;z-index:101;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <div id="banner">
       <ul class="links">
         <li><g:link controller="Event" action="list">Upcoming&thinsp;${upcomingCount?'('+upcomingCount+')':''}</g:link></li>
