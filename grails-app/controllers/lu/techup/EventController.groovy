@@ -20,15 +20,30 @@ class EventController {
       // Default sorting by date
       params.sort = "fromDate"
       params.order = "asc"
- 
+      // Query only future events, or past events??
+      // Group by Date in Map and render each day as List
+      // USe as filter by tag, language, ...tag=[1,2,3,4], lamguage=[1]...
+      //def eventInstanceList = Event.findAllByFromDateGreaterThanEqualsAndHidden(g.formatDate([date:new Date(), type:'date']),false)
       def now = new Date()
       def eventInstanceList = Event.findAllByFromDateGreaterThanEqualsAndHidden(now.updated(hourOfDay:0, minute:0, second:0),false)
 
-      def upcomingCount = eventService.countUpcomingEvents()
+      // if format request is ical
+      if(params.format == 'ical'){
+         response.setHeader "Content-disposition", "attachment; filename=techup_lu_upcoming.ics"
+         response.contentType = "text/calendar"
+         response.setStatus(200)
+         response.outputStream << g.render(template:"ical", model:[events:eventInstanceList], contentType:"text/calendar")
+         response.outputStream.flush()
+         return
+      }
+
+      //def pastCount = Event.countByFromDateLessThanAndHidden(g.formatDate([date:new Date(), type:'date']),false)
       def pastCount = eventService.countPastEvents()
-      // Group by Date in Map and render each day as List      
+      // Group by Date in Map and render each day as List
+      
       def eventInstanceMap = [:]
       eventInstanceList.each(){ event ->
+         //def key = g.formatDate([date:event.fromDate, type:'date'])
          def key = event.fromDate?.updated(hourOfDay:0, minute:0, second:0)
          def tmp = eventInstanceMap.get( key )
          if(!tmp)
@@ -36,7 +51,7 @@ class EventController {
          tmp.add(event)
          eventInstanceMap.put(key, tmp)
       }        
-      render( view:'list', model:[pastCount: pastCount, upcomingCount: upcomingCount, eventInstanceMap:eventService.organizeEventsByDay( eventInstanceList ), title:message([code:"techup.events.list.upcoming", default:"Events"])] )
+      render( view:'list', model:[pastCount: pastCount, upcomingCount: eventInstanceList?.size(), eventInstanceMap:eventService.organizeEventsByDay( eventInstanceList ), title:g.message([code:"techup.events.list.upcoming", default:"Events"])] )
    }
 
    def past() {
@@ -44,15 +59,16 @@ class EventController {
       // Default sorting by date
       params.sort = "fromDate"
       params.order = "asc"
-
+      // Query only future events, or past events??
       def now = new Date()
       def eventInstanceList = Event.findAllByFromDateLessThanAndHidden(now.updated(hourOfDay:0, minute:0, second:0),false)
 
+      //def upcomingCount = Event.countByFromDateGreaterThanEqualsAndHidden(g.formatDate([date:new Date(), type:'date']),false)
       def upcomingCount = eventService.countUpcomingEvents()
-      def pastCount = eventService.countPastEvents()
       // Group by Date in Map and render each day as List
       def eventInstanceMap = [:]
       eventInstanceList.each(){ event ->
+         //def key = g.formatDate([date:event.fromDate, type:'date'])
          def key = event.fromDate?.updated(hourOfDay:0, minute:0, second:0)
          def tmp = eventInstanceMap.get( key )
          if(!tmp)
@@ -61,7 +77,8 @@ class EventController {
          eventInstanceMap.put(key, tmp)
       }
 
-      render(view:'list', model:[title:g.message([code:"techup.events.list.past", default:"Events"]), upcomingCount:upcomingCount, pastCount: pastCount, eventInstanceMap:eventService.organizeEventsByDay( eventInstanceList )]) 
+      // USe as filter by tag, language, ...tag=[1,2,3,4], lamguage=[1]...
+      render(view:'list', model:[title:g.message([code:"techup.events.list.past", default:"Events"]), upcomingCount:upcomingCount, pastCount: eventInstanceList?.size(), eventInstanceMap:eventService.organizeEventsByDay( eventInstanceList )]) //FIXME: Date has to be the whole day
    }
 
    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
@@ -101,10 +118,10 @@ class EventController {
             logger.error("Could not save new Tag"+params.tags)
          }
          params.tags = nTag
-
+         //params.tags = Tag.findOrSaveByName(  )
       }else{
          params.tags?.each(){
-
+            //filterTags.add( Tag.findOrSaveByName( it.toLowerCase() ) )
             def nTag = Tag.findByNameIlike( it )
             if(!nTag)
                nTag = new Tag( [name:it] )
@@ -115,7 +132,7 @@ class EventController {
          }
          params.tags = filterTags
       }
-      // Set default Params
+
       params.initiator = springSecurityService.currentUser
       params.hidden = params.hidden?:'false'
       params.cancelled = params.cancelled?:'false'
@@ -153,12 +170,23 @@ class EventController {
          redirect(action: "upcoming")
          return
       }
+      // if format request is ical
+      if(params.format == 'ical'){
+         response.setHeader "Content-disposition", "attachment; filename=techup_lu_${eventInstance.id}.ics"
+         response.contentType = "text/calendar"
+         response.setStatus(200)
+         response.outputStream << g.render(template:"ical", model:[events:[eventInstance]], contentType:"text/calendar")
+         response.outputStream.flush()
+         return
+      }
+
       def editable = false 
-      // Is the user the submitter of the event, if yes show editable controls
       if(springSecurityService.currentUser?.id == eventInstance?.initiator.id){
          editable = true
       }
 
+      //def pastCount = Event.countByFromDateLessThanAndHidden(g.formatDate([date:new Date(), type:'date']),false)
+      //def upcomingCount = Event.countByFromDateGreaterThanEqualsAndHidden(g.formatDate([date:new Date(), type:'date']),false)
       def upcomingCount = eventService.countUpcomingEvents()
       def pastCount = eventService.countPastEvents()
 
@@ -217,6 +245,7 @@ class EventController {
          params.newvenue.verified = false
          def venueInstance = new Venue(params.newvenue)
          if(!venueInstance.save(flush:true)){
+            // FIXME:, what to do
             log.error("Could Not save venue instance, "+ venueInstance)     
          } 
          params.venue = venueInstance

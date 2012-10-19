@@ -3,6 +3,9 @@ class UrlMappings {
 	static mappings = {
 
       "/"(controller:"event", action:"upcoming")
+      "/ical.ics"(controller:"event", action:"upcoming"){
+      	format = 'ical'
+      }
 
       "/$id"(controller:"event",action:"show"){
 			constraints {

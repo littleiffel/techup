@@ -33,7 +33,7 @@ class UserController {
       def userInstance = User.get(params.id)
       if (!userInstance) {
          flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
-         redirect(action: "list") 
+         redirect(action: "list") // FIXME: Dont redirect, let user stay on the page where he was, or give user doe not exist message
          return
       }
 
@@ -42,6 +42,7 @@ class UserController {
          privateUser = true
       }
 
+      //def now = new Date(g.formatDate([date:new Date(), type:'date']))
       def now = new Date()
       now = now.updated(hourOfDay:0, minute:0, second:0)
       def events = userInstance.getAttends()?.toList()
@@ -59,6 +60,16 @@ class UserController {
             tags.addAll( event.getTags() )
          }  
       } 
+
+      // if format request is ical
+      if(params.format == 'ical'){
+         response.setHeader "Content-disposition", "attachment; filename=techup_lu_upcoming.ics"
+         response.contentType = "text/calendar"
+         response.setStatus(200)
+         response.outputStream << g.render(template:"/event/ical", model:[events:upcoming], contentType:"text/calendar")
+         response.outputStream.flush()
+         return
+      }
 
       def submitted 
       if(privateUser){
@@ -97,7 +108,7 @@ class UserController {
    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
    def unattend() {
       def userInstance = springSecurityService.currentUser
-      
+      //FIXME:userInstance might be null if noone is logging in
       def eventInstance = Event.get(params.id)
       if(!eventInstance) {
          flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])

@@ -33,7 +33,7 @@
 				<g:if test="${eventInstance?.url}">
 					<br>
 					<span class="homepage">
-						<a href="${eventInstance.url}" title="${eventInstance.url}"><g:fieldValue bean="${eventInstance}" field="url"/></a>
+						<a href="${eventInstance.url}" title="${eventInstance.url}"><i class="icon-home"></i>&thinsp;Event Home</a>
 					</span>
 				</g:if>
 
@@ -73,7 +73,7 @@
 			<div class="location">
 				<a href="http://maps.google.com/maps?q=${eventInstance?.getVenue().getName()}&ll=${eventInstance?.getVenue()?.lat},${eventInstance?.getVenue()?.lon}&spn=0.123682,0.338173&ctz=-120&t=h&z=16"><img src="http://maps.googleapis.com/maps/api/staticmap?center=${eventInstance?.getVenue()?.lat},%20${eventInstance?.getVenue()?.lon}&zoom=14&size=250x150&maptype=terrain&sensor=false&markers=color:blue%7C${eventInstance?.getVenue()?.lat},%20${eventInstance?.getVenue()?.lon}"/></a>
 			</div>
-			<ul class="social interactions">
+			<ul class="social">
 				<li><a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.techup.lu/${eventInstance?.id}" data-via="techup_lu" data-related="techup_lu" data-count="vertical" data-hashtags="${eventInstance?.hashtag?:''}" data-dnt="true">Tweet</a></li>
 				<li><div class="fb-like" data-send="false" data-layout="box_count" data-width="50" data-show-faces="true" data-font="arial"></div></li>
 			</ul>
@@ -84,6 +84,7 @@
 				<g:else>
 					<li><g:link controller="user" action="attend" id="${eventInstance?.id}" class="btn btn-success"><i class="icon-user icon-white"></i>&thinsp;<g:message code="techup.button.attend" default="Attend"/></g:link></li>
 				</g:else>
+					<li><g:link controller="event" action="show" id="${eventInstance?.id}" params="[format:'ical']" class="btn btn-primary"><i class="icon-time icon-white"></i>&thinsp;<g:message code="techup.button.ical" default="iCal"/></g:link></li>
 			</ul>
 			<g:if test="${editable}">
 				<ul class="admin-actions">

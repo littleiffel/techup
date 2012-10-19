@@ -80,7 +80,7 @@
     <footer>
       <g:link url="/about">About techup</g:link>  <a href="https://twitter.com/Techup_lu" class="twitter-follow-button" data-show-count="false">Follow @Techup_lu</a>  
       <span class="right  hidden-phone">
-        by <a href="http://www.twitter.com/#!/littleiffel" alt="littleiffel" class="hovercard twitter-anywhere-user">littleiffel</a> | <a href="http://www.techup.lu/feed/latest?version=2.0&format=rss" title="RSS for Latest Events on Techup.lu - by submission date"><img src="${resource( dir:'images', file:'feed.png')}" /></a>
+        by <a href="http://www.twitter.com/#!/littleiffel" alt="littleiffel" class="hovercard twitter-anywhere-user">littleiffel</a> | <a href="http://www.techup.lu/feed/latest?version=2.0&format=rss" title="RSS for Latest Events on Techup.lu - by submission date"><img src="${resource( dir:'images', file:'feed.png')}" /></a>&thinsp;<a href="http://www.techup.lu/ical.ics" title="ical for Latest Events on Techup.lu"><img src="${resource( dir:'images', file:'ical.png')}" /></a>
       </span>
     </footer>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

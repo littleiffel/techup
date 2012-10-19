@@ -1,6 +1,13 @@
 .day-list-item {
    .makeRowFluid();
    margin-bottom: 45px;
+   &.highlight {
+      background: @highlightBGColor;
+      padding: 5px;
+      width: 98%;
+      border: 1px solid @highlightBorderColor;
+      border-radius: 2px;
+   }
 }
 
 .day-wrapper{
@@ -28,19 +35,19 @@
 
 .day-events {
    @media (min-width: 1200px) {
-      border-left: 1px solid #ccc;
+      border-left: 1px solid @highlightBorderColor;
       margin: 0 5px 0 25px ;
       padding: 0 10px;
    }
    // Landscape TABLET TO Large DESKTOP
    @media (min-width: 980px) and (max-width: 1199px) {
-      border-left: 1px solid #ccc;
+      border-left: 1px solid @highlightBorderColor;
       margin: 0 5px 0 25px ;
       padding: 0 10px;
    }
    // PORTRAIT TABLET 
    @media (min-width: 768px) and (max-width: 979px) {
-      border-left: 1px solid #ccc;
+      border-left: 1px solid @highlightBorderColor;
       margin: 0 5px 0 25px ;
       padding: 0 10px;
    }
@@ -151,6 +158,9 @@ section.event{
 div.informations{
 //   .makeColumn(11);
    font-size: @biggerFontSize;
+   span.homepage{
+      font-size: @baseFontSize;
+   }
 }
 
 div.sidebar{
@@ -165,12 +175,20 @@ div.sidebar{
       li{
          float: left;
          margin: 5px;
+         padding-right: 7px;
       }
       &.social li{
          float: left;
       }
       .btn {
          width:90%;
+      }
+   }
+   ul.interactions li {
+      float:none;
+      width: 100%;
+      a{
+         width:75%;
       }
    }
    .event-attendees-wrapper{

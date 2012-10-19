@@ -8,6 +8,9 @@
          <a href="#" class="twitter-anywhere-user hovercard" alt="${userInstance?.encodeAsHTML()}" style="display:block;width:48px;height:48px;background:url(http://twitter.com/api/users/profile_image/${userInstance?.encodeAsHTML()})">
             <span style="position:absolute; left:-3000px;">${userInstance?.encodeAsHTML()}</span>
          </a>
+         <% if(privateUser){ %>
+            <g:link controller="user" action="show" id="${userInstance.id}" params="[format:'ical']" title="iCal for Events attended by ${userInstance.encodeAsHTML()}"><img src="${resource( dir:'images', file:'ical_64.png')}" /></g:link>
+         <% } %>
       </div>
       <div class="title">@${userInstance?.getUsername()}</div>
       <ul class="tags">

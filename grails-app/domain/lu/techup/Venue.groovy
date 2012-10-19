@@ -2,9 +2,11 @@ package lu.techup
 
 class Venue {
 
-   String name  
+   String name
+   
    String adress
    String homepage
+
    Float lat
    Float lon
    Boolean verified
@@ -21,5 +23,16 @@ class Venue {
 
    String toString(){
       return name
+   }
+
+   Map forJSON(){
+      def r = [:]
+      r.name = name
+      r.lat = lat
+      r.lon = lon
+      r.adress = adress
+      r.url = homepage
+      r.verified = verified
+      return r 
    }
 }
