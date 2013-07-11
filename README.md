@@ -1,3 +1,4 @@
+[![Stories in Ready](http://badge.waffle.io/littleiffel/techup.png)](http://waffle.io/littleiffel/techup)  
 techup
 ======
 
