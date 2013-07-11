@@ -1,4 +1,3 @@
-[![Stories in Ready](http://badge.waffle.io/littleiffel/techup.png)](http://waffle.io/littleiffel/techup)  
 techup
 ======
 
@@ -39,3 +38,7 @@ Resources
 Credits
 =======
 Check the About Page on Techup.lu (www.techup.lu/about)
+
+Help & Contribute
+=================
+[![Stories in Ready](http://badge.waffle.io/littleiffel/techup.png)](http://waffle.io/littleiffel/techup)  
