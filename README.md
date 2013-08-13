@@ -41,4 +41,4 @@ Check the About Page on Techup.lu (www.techup.lu/about)
 
 Help & Contribute
 =================
-[![Stories in Ready](http://badge.waffle.io/littleiffel/techup.png)](http://waffle.io/littleiffel/techup)  
+[![Stories in Ready](https://badge.waffle.io/littleiffel/techup.png)](https://waffle.io/littleiffel/techup)  
